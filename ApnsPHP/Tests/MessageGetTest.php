@@ -17,7 +17,7 @@ use ApnsPHP\Message\PushType;
  *
  * @covers \ApnsPHP\Message
  */
-class MessageGetTest extends MessageTest
+class MessageGetTest extends MessageTestCase
 {
     /**
      * Test that getText() gets the message text.

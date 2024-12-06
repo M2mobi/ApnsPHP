@@ -18,7 +18,7 @@ use stdClass;
  *
  * @covers \ApnsPHP\Push
  */
-class PushSendTest extends PushTest
+class PushSendTest extends PushTestCase
 {
     /**
      * Test that send() throws an exception if there is no connection to the push notification service
@@ -79,14 +79,14 @@ class PushSendTest extends PushTest
 
         $this->logger->expects($this->exactly(6))
                      ->method('info')
-                     ->withConsecutive(
+                     ->willReturnMap([
                          [ 'Sending messages queue, run #1: 1 message(s) left in queue.' ],
                          [ 'Disconnected.' ],
                          [ 'Trying to initialize HTTP/2 backend...' ],
                          [ 'Initializing HTTP/2 backend with certificate.' ],
                          [ 'Initialized HTTP/2 backend.' ],
                          [ 'Sending messages queue, run #2: 1 message(s) left in queue.' ],
-                     );
+                     ]);
 
         $this->logger->expects($this->once())
                      ->method('debug')
@@ -127,7 +127,7 @@ class PushSendTest extends PushTest
 
         $this->logger->expects($this->exactly(16))
                      ->method('info')
-                     ->withConsecutive(
+                     ->willReturnMap([
                          [ 'Sending messages queue, run #1: 1 message(s) left in queue.' ],
                          [ 'Disconnected.' ],
                          [ 'Trying to initialize HTTP/2 backend...' ],
@@ -144,15 +144,15 @@ class PushSendTest extends PushTest
                          [ 'Initializing HTTP/2 backend with certificate.' ],
                          [ 'Initialized HTTP/2 backend.' ],
                          [ 'Sending messages queue, run #4: 1 message(s) left in queue.' ],
-                     );
+                     ]);
 
         $this->logger->expects($this->exactly(3))
                      ->method('debug')
-                     ->withConsecutive(
+                     ->willReturnMap([
                          [ 'Sending message ID 1 [custom identifier: unset] (1/3): 0 bytes.' ],
                          [ 'Sending message ID 1 [custom identifier: unset] (2/3): 0 bytes.' ],
                          [ 'Sending message ID 1 [custom identifier: unset] (3/3): 0 bytes.' ],
-                     );
+                     ]);
 
         $this->logger->expects($this->once())
                      ->method('warning')
@@ -190,7 +190,7 @@ class PushSendTest extends PushTest
 
         $this->logger->expects($this->exactly(7))
                      ->method('info')
-                     ->withConsecutive(
+                     ->willReturnMap([
                          [ 'Sending messages queue, run #1: 1 message(s) left in queue.' ],
                          [ 'Disconnected.' ],
                          [ 'Trying to initialize HTTP/2 backend...' ],
@@ -199,7 +199,7 @@ class PushSendTest extends PushTest
                          [ 'Sending messages queue, run #2: 1 message(s) left in queue.' ],
                          [ 'Message ID 1 [custom identifier: unset] has no error (200),
                                  removing from queue...'],
-                     );
+                     ]);
 
         $this->logger->expects($this->once())
                      ->method('debug')

@@ -17,14 +17,14 @@ use ApnsPHP\Message;
  *
  * @covers \ApnsPHP\Message
  */
-class MessageSelfForRecipientTest extends MessageTest
+class MessageSelfForRecipientTest extends MessageTestCase
 {
     /**
      * Test that selfForRecipient throws exception on invalid index
      *
      * @covers \ApnsPHP\Message::selfForRecipient
      */
-    public function testselfForRecipientThrowsExceptionOnInvalidIndex(): void
+    public function testSelfForRecipientThrowsExceptionOnInvalidIndex(): void
     {
         $this->expectException('ApnsPHP\Exception');
         $this->expectExceptionMessage('No recipient at index \'1\'');
@@ -37,7 +37,7 @@ class MessageSelfForRecipientTest extends MessageTest
      *
      * @covers \ApnsPHP\Message::selfForRecipient
      */
-    public function testselfForRecipientGetsMessage(): void
+    public function testSelfForRecipientGetsMessage(): void
     {
         $token   = '1e82db91c7ceddd72bf33d74ae052ac9c84a065b35148ac401388843106a7485';
         $message = new Message($token);

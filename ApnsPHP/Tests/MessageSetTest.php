@@ -17,14 +17,14 @@ use ApnsPHP\Message\PushType;
  *
  * @covers \ApnsPHP\Message
  */
-class MessageSetTest extends MessageTest
+class MessageSetTest extends MessageTestCase
 {
     /**
      * Unit test data provider for reserved apple namespace keys.
      *
      * @return array Variations of the reserved apple namespace key
      */
-    public function reservedAppleNamespaceKeyProvider(): array
+    public static function reservedAppleNamespaceKeyProvider(): array
     {
         $data   = [];
         $data[] = [ 'aps' ];
@@ -40,7 +40,7 @@ class MessageSetTest extends MessageTest
      *
      * @return array Variations of valid custom identifiers
      */
-    public function validCustomIdentifierProvider(): array
+    public static function validCustomIdentifierProvider(): array
     {
         $data   = [];
         $data[] = [ '3491ac4b-0681-4c92-8308-d8d8441f4e64' ];
@@ -54,7 +54,7 @@ class MessageSetTest extends MessageTest
      *
      * @return array Variations of a valid message priority
      */
-    public function validPriorityProvider(): array
+    public static function validPriorityProvider(): array
     {
         $data   = [];
         $data[] = [ Priority::PrioritizePowerUsage ];
@@ -69,7 +69,7 @@ class MessageSetTest extends MessageTest
      *
      * @return array Variations of a valid push type
      */
-    public function validPushTypeProvider(): array
+    public static function validPushTypeProvider(): array
     {
         $data   = [];
         $data[] = [ PushType::Alert ];

@@ -15,7 +15,7 @@ namespace ApnsPHP\Tests;
  *
  * @covers \ApnsPHP\Push
  */
-class PushUpdateQueueTest extends PushTest
+class PushUpdateQueueTest extends PushTestCase
 {
     /**
      * Test that updateQueue() returns false if there is no errorMessage
@@ -57,11 +57,11 @@ class PushUpdateQueueTest extends PushTest
 
         $this->logger->expects($this->exactly(3))
                      ->method('info')
-                     ->withConsecutive(
+                     ->willReturnMap([
                          [ 'Trying to initialize HTTP/2 backend...' ],
                          [ 'Initializing HTTP/2 backend with certificate.' ],
                          [ 'Initialized HTTP/2 backend.' ],
-                     );
+                     ]);
 
         $this->logger->expects($this->never())
                      ->method('warning');
@@ -104,11 +104,11 @@ class PushUpdateQueueTest extends PushTest
 
         $this->logger->expects($this->exactly(3))
                      ->method('info')
-                     ->withConsecutive(
+                     ->willReturnMap([
                          [ 'Trying to initialize HTTP/2 backend...' ],
                          [ 'Initializing HTTP/2 backend with certificate.' ],
                          [ 'Initialized HTTP/2 backend.' ],
-                     );
+                     ]);
 
         $this->logger->expects($this->never())
                      ->method('warning');

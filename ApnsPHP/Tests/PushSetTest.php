@@ -14,7 +14,7 @@ namespace ApnsPHP\Tests;
  *
  * @covers \ApnsPHP\Push
  */
-class PushSetTest extends PushTest
+class PushSetTest extends PushTestCase
 {
     /**
      * Test that setSendRetryTimes() sets how often sends should be retried.

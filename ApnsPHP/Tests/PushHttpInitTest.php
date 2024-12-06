@@ -20,7 +20,7 @@ use Lcobucci\JWT\Token\Signature;
  *
  * @covers \ApnsPHP\Push
  */
-class PushHttpInitTest extends PushTest
+class PushHttpInitTest extends PushTestCase
 {
     /**
      * Test that httpInit() succeeds with certificate
@@ -40,7 +40,7 @@ class PushHttpInitTest extends PushTest
 
         $this->logger->expects($this->exactly(3))
                      ->method('info')
-                     ->withConsecutive(...$message);
+                     ->willReturnMap($message);
 
         $method = $this->get_reflection_method('httpInit');
         $result = $method->invoke($this->class);
@@ -99,11 +99,11 @@ class PushHttpInitTest extends PushTest
 
         $this->logger->expects($this->exactly(3))
                      ->method('info')
-                     ->withConsecutive(
+                     ->willReturnMap([
                          [ 'Trying to initialize HTTP/2 backend...' ],
                          [ 'Initializing HTTP/2 backend with key.' ],
                          [ 'Initialized HTTP/2 backend.' ]
-                     );
+                     ]);
 
         $method = $this->get_reflection_method('httpInit');
         $result = $method->invoke($this->class);
@@ -167,10 +167,10 @@ class PushHttpInitTest extends PushTest
 
         $this->logger->expects($this->exactly(2))
                      ->method('info')
-                     ->withConsecutive(
+                     ->willReturnMap([
                          [ 'Trying to initialize HTTP/2 backend...' ],
                          [ 'Initializing HTTP/2 backend with key.' ],
-                     );
+                     ]);
 
         $this->expectException('ApnsPHP\Exception');
         $this->expectExceptionMessage('Unable to initialize HTTP/2 backend.');

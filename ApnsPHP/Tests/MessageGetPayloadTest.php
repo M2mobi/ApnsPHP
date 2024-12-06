@@ -15,7 +15,7 @@ namespace ApnsPHP\Tests;
  *
  * @covers \ApnsPHP\Message
  */
-class MessageGetPayloadTest extends MessageTest
+class MessageGetPayloadTest extends MessageTestCase
 {
     /**
      * Test that getPayload() returns complete JSON encoded payload
@@ -161,7 +161,7 @@ class MessageGetPayloadTest extends MessageTest
      *
      * @return string String of certain size in bytes
      */
-    private function getLargeString($size): string
+    private function getLargeString(int $size): string
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $length     = strlen($characters);

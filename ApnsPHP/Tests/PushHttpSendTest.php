@@ -19,7 +19,7 @@ use ApnsPHP\Message\PushType;
  *
  * @covers \ApnsPHP\Push
  */
-class PushHttpSendTest extends PushTest
+class PushHttpSendTest extends PushTestCase
 {
     /**
      * Helper function to set the http headers and verify calls to message getters
@@ -29,11 +29,11 @@ class PushHttpSendTest extends PushTest
     {
         $this->message->expects($this->exactly(2))
                       ->method('getTopic')
-                      ->will($this->returnValue('topic'));
+                      ->willReturn('topic');
 
         $this->message->expects($this->exactly(2))
                       ->method('getExpiry')
-                      ->will($this->returnValue(10));
+                      ->willReturn(10);
 
         $this->message->expects($this->exactly(2))
                       ->method('getPriority')
@@ -41,15 +41,15 @@ class PushHttpSendTest extends PushTest
 
         $this->message->expects($this->exactly(2))
                       ->method('getCollapseId')
-                      ->will($this->returnValue('1'));
+                      ->willReturn('1');
 
         $this->message->expects($this->exactly(2))
                       ->method('getCustomIdentifier')
-                      ->will($this->returnValue('7530A828-E58E-433E-A38F-D8042208CF96'));
+                      ->willReturn('7530A828-E58E-433E-A38F-D8042208CF96');
 
         $this->message->expects($this->exactly(2))
                       ->method('getPushType')
-                      ->will($this->returnValue(PushType::Alert));
+                      ->willReturn(PushType::Alert);
 
         $this->set_reflection_property_value('providerToken', 'jwt');
     }
@@ -70,11 +70,11 @@ class PushHttpSendTest extends PushTest
 
         $this->message->expects($this->once())
                       ->method('getRecipient')
-                      ->will($this->returnValue('recipient'));
+                      ->willReturn('recipient');
 
         $this->message->expects($this->once())
                       ->method('getPayload')
-                      ->will($this->returnValue('payload'));
+                      ->willReturn('payload');
 
         $reply = 'reply';
 
@@ -105,11 +105,11 @@ class PushHttpSendTest extends PushTest
 
         $this->message->expects($this->once())
                       ->method('getRecipient')
-                      ->will($this->returnValue('recipient'));
+                      ->willReturn('recipient');
 
         $this->message->expects($this->once())
                       ->method('getPayload')
-                      ->will($this->returnValue('payload'));
+                      ->willReturn('payload');
 
         $reply = 'reply';
 
@@ -139,11 +139,11 @@ class PushHttpSendTest extends PushTest
 
         $this->message->expects($this->once())
                       ->method('getRecipient')
-                      ->will($this->returnValue('recipient'));
+                      ->willReturn('recipient');
 
         $this->message->expects($this->once())
                       ->method('getPayload')
-                      ->will($this->returnValue('payload'));
+                      ->willReturn('payload');
 
         $reply = 'reply';
 
@@ -174,11 +174,11 @@ class PushHttpSendTest extends PushTest
 
         $this->message->expects($this->once())
                       ->method('getRecipient')
-                      ->will($this->returnValue('recipient'));
+                      ->willReturn('recipient');
 
         $this->message->expects($this->once())
                       ->method('getPayload')
-                      ->will($this->returnValue('payload'));
+                      ->willReturn('payload');
 
         $reply = 'reply';
 

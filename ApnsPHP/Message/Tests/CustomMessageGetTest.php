@@ -14,7 +14,7 @@ namespace ApnsPHP\Message\Tests;
  *
  * @covers \ApnsPHP\Message\CustomMessage
  */
-class CustomMessageGetTest extends CustomMessageTest
+class CustomMessageGetTest extends CustomMessageTestCase
 {
     /**
      * Test that getActionLocKey() gets the view button title.

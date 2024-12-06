@@ -15,7 +15,7 @@ namespace ApnsPHP\Tests;
  *
  * @covers \ApnsPHP\Push
  */
-class PushAddTest extends PushTest
+class PushAddTest extends PushTestCase
 {
     /**
      * Test that add() successfully adds one message
@@ -26,16 +26,16 @@ class PushAddTest extends PushTest
     {
         $this->message->expects($this->once())
                       ->method('getPayLoad')
-                      ->will($this->returnValue('payload'));
+                      ->willReturn('payload');
 
         $this->message->expects($this->once())
-                      ->method('getRecipientsNumber')
-                      ->will($this->returnValue(1));
+                      ->method('getRecipientsCount')
+                      ->willReturn(1);
 
         $this->message->expects($this->once())
                       ->method('selfForRecipient')
                       ->with(0)
-                      ->will($this->returnValue($this->message));
+                      ->willReturn($this->message);
 
         $this->class->add($this->message);
 
@@ -60,16 +60,22 @@ class PushAddTest extends PushTest
 
         $this->message->expects($this->once())
                       ->method('getPayLoad')
-                      ->will($this->returnValue('payload'));
+                      ->willReturn('payload');
 
         $this->message->expects($this->once())
-                      ->method('getRecipientsNumber')
-                      ->will($this->returnValue(4));
+                      ->method('getRecipientsCount')
+                      ->willReturn(4);
+
+        $map = [
+            [ 0, $this->message ],
+            [ 1, $this->message ],
+            [ 2, $this->message ],
+            [ 3, $this->message ],
+        ];
 
         $this->message->expects($this->exactly(4))
                       ->method('selfForRecipient')
-                      ->withConsecutive([0], [1], [2], [3])
-                      ->will($this->returnValue($this->message));
+                      ->willReturnMap($map);
 
         $this->class->add($this->message);
 
@@ -87,11 +93,11 @@ class PushAddTest extends PushTest
     {
         $this->message->expects($this->once())
                       ->method('getPayLoad')
-                      ->will($this->returnValue('payload'));
+                      ->willReturn('payload');
 
         $this->message->expects($this->once())
-                      ->method('getRecipientsNumber')
-                      ->will($this->returnValue(0));
+                      ->method('getRecipientsCount')
+                      ->willReturn(0);
 
         $this->class->add($this->message);
 

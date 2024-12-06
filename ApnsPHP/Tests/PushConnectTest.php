@@ -19,7 +19,7 @@ use Throwable;
  *
  * @covers \ApnsPHP\Push
  */
-class PushConnectTest extends PushTest
+class PushConnectTest extends PushTestCase
 {
     /**
      * Test that connect() connects successfully
@@ -34,11 +34,11 @@ class PushConnectTest extends PushTest
 
         $this->logger->expects($this->exactly(3))
                      ->method('info')
-                     ->withConsecutive(
+                     ->willReturnMap([
                          [ 'Trying to initialize HTTP/2 backend...' ],
                          [ 'Initializing HTTP/2 backend with certificate.' ],
                          [ 'Initialized HTTP/2 backend.' ],
-                     );
+                     ]);
 
         $this->class->connect();
 
@@ -57,16 +57,13 @@ class PushConnectTest extends PushTest
 
         $this->mock_function('curl_setopt_array', fn() => false);
 
-        $message = [
-        ];
-
         $this->logger->expects($this->exactly(4))
                      ->method('error')
                      ->with('Unable to initialize HTTP/2 backend.');
 
         $this->logger->expects($this->exactly(11))
                      ->method('info')
-                     ->withConsecutive(
+                     ->willReturnMap([
                          [ 'Trying to initialize HTTP/2 backend...' ],
                          [ 'Initializing HTTP/2 backend with certificate.' ],
                          [ 'Retry to connect (1/3)...' ],
@@ -78,7 +75,7 @@ class PushConnectTest extends PushTest
                          [ 'Retry to connect (3/3)...' ],
                          [ 'Trying to initialize HTTP/2 backend...' ],
                          [ 'Initializing HTTP/2 backend with certificate.' ],
-                     );
+                     ]);
 
         $this->expectException('ApnsPHP\Exception');
         $this->expectExceptionMessage('Unable to initialize HTTP/2 backend.');

@@ -1,39 +1,40 @@
 <?php
 
 /**
- * This file contains the SafariMessageTest class.
+ * This file contains the MessageTest class.
  *
  * SPDX-FileCopyrightText: Copyright 2021 M2mobi B.V., Amsterdam, The Netherlands
  * SPDX-FileCopyrightText: Copyright 2022 Move Agency Group B.V., Zwolle, The Netherlands
  * SPDX-License-Identifier: BSD-2-Clause
  */
 
-namespace ApnsPHP\Message\Tests;
+namespace ApnsPHP\Tests;
 
-use ApnsPHP\Message\SafariMessage;
+use ApnsPHP\Message;
 use Lunr\Halo\LunrBaseTest;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
 /**
  * This class contains common setup routines, providers
- * and shared attributes for testing the SafariMessage class.
+ * and shared attributes for testing the Message class.
  *
- * @covers \ApnsPHP\Message\SafariMessage
+ * @covers \ApnsPHP\Message
  */
-abstract class SafariMessageTest extends LunrBaseTest
+abstract class MessageTestCase extends LunrBaseTest
 {
     /**
      * Class to test
-     * @var SafariMessage
+     * @var Message
      */
-    protected SafariMessage $class;
+    protected Message $class;
 
     /**
      * TestCase constructor
      */
     public function setUp(): void
     {
-        $this->class      = new SafariMessage();
+        $this->class = new Message();
         $this->baseSetUp($this->class);
     }
 

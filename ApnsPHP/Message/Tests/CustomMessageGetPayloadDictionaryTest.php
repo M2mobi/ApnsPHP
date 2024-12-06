@@ -15,7 +15,7 @@ namespace ApnsPHP\Message\Tests;
  *
  * @covers \ApnsPHP\Message\CustomMessage
  */
-class CustomMessageGetPayloadDictionaryTest extends CustomMessageTest
+class CustomMessageGetPayloadDictionaryTest extends CustomMessageTestCase
 {
     /**
      * Test that getPayloadDictionary returns complete payload with body if locKey isn't set

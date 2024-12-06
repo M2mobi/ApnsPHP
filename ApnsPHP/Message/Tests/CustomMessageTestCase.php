@@ -20,7 +20,7 @@ use ReflectionClass;
  *
  * @covers \ApnsPHP\Message\CustomMessage
  */
-abstract class CustomMessageTest extends LunrBaseTest
+abstract class CustomMessageTestCase extends LunrBaseTest
 {
     /**
      * Class to test
